@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>  
+<body>
+
+<?php
+// define variables and set to empty values
+$uname = $fname = $address = $gender = $country = $hobbies"";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $name = test_input($_POST["name"]);
+  $email = test_input($_POST["email"]);
+  $website = test_input($_POST["website"]);
+  $comment = test_input($_POST["comment"]);
+  $gender = test_input($_POST["gender"]);
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+
+<form method="post" action="submit.php">
+	<h1>Add User</h1>
+	<div style="border: 1px solid black; width: 400px; text-align: center;" 
+align="center"> <br>
+	
+	Username: 	<input type="text" name="uname" required><br><br>
+
+	FirstName: 	<input type="text" name="fname" required><br><br>
+	
+	Address: 	<textarea name="address" rows="5" cols="30" placeholder="Enter Your Address" required></textarea><br><br>
+	
+	Gender: 	<input type="radio" name="gender" value="male" required> Male
+				<input type="radio" name="gender" value="female" required> Female <br><br>
+
+	Country: 	<select name="country" required>
+					<option value ="">Select Country</option>
+					<option value ="india">India</option>
+					<option value ="spain">Spain</option>
+					<option value ="ukrain">Ukrain</option>
+			 	</select> <br><br>
+
+	Hobbies:	<input type="checkbox" required name="hobbies" value="Cricket"> Cricket
+				<input type="checkbox" name="hobbies" value="Chess"> Chess 
+				<input type="checkbox" name="hobbies" value="FootBall"> FootBall 
+				<input type="checkbox" name="hobbies" value="Music"> Music 
+				<br><br>
+
+	<input type="submit">
+	<br><br>
+</form>
+</div> 
+
+</body>
+</html>
